@@ -20,8 +20,8 @@ impl Opcode for Codecopy {
     ) -> Result<Vec<ExecStep>, Error> {
         let geth_step = &geth_steps[0];
         let mut exec_steps = vec![gen_codecopy_step(state, geth_step)?];
-        let memory_copy_steps = gen_memory_copy_steps(state, geth_steps)?;
-        exec_steps.extend(memory_copy_steps);
+        // let memory_copy_steps = gen_memory_copy_steps(state, geth_steps)?;
+        // exec_steps.extend(memory_copy_steps);
         Ok(exec_steps)
     }
 }
@@ -58,6 +58,7 @@ fn gen_codecopy_step(
     Ok(exec_step)
 }
 
+/*
 fn gen_memory_copy_step(
     state: &mut CircuitInputStateRef,
     exec_step: &mut ExecStep,
@@ -120,6 +121,7 @@ fn gen_memory_copy_steps(
 
     Ok(steps)
 }
+ */
 
 #[cfg(test)]
 mod codecopy_tests {
