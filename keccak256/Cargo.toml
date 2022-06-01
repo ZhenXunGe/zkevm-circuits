@@ -7,12 +7,12 @@ edition = "2018"
 dev-graph = ["halo2_proofs/dev-graph", "plotters"]
 
 [dependencies]
-halo2_proofs = { git = "https://github.com/appliedzkp/halo2.git", tag = "v2022_05_09" }
+halo2_proofs = { git = "https://github.com/junyu0312/halo2", rev = "4112958c7fa980b331897fd030a329095f418ff9", default-features = true }
 itertools = "0.10.1"
 num-bigint = "0.4.2"
 num-traits = "0.2.14"
 plotters = { version = "0.3.0", optional = true }
-eth-types = { path = "../eth-types" } 
+eth-types = { path = "../eth-types" }
 lazy_static = "1.4"
 gadgets = { path = "../gadgets" }
 

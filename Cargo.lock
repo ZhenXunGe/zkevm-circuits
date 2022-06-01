@@ -335,7 +335,7 @@ checksum = "8f1e260c3a9040a7c19a12468758f4c16f31a81a1fe087482be9570ec864bb6c"
 name = "bus-mapping"
 version = "0.1.0"
 dependencies = [
- "eth-types",
+ "eth-types 0.1.0",
  "ethers-core",
  "ethers-providers",
  "hex",
@@ -477,8 +477,10 @@ version = "0.1.0"
 dependencies = [
  "ark-std",
  "bus-mapping",
- "eth-types",
+ "eth-types 0.1.0",
  "ff 0.11.1",
+ "halo2-ecc-circuit-lib",
+ "halo2-snark-aggregator-circuit",
  "halo2_proofs",
  "itertools",
  "keccak256",
@@ -494,8 +496,47 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a0610544180c38b88101fecf2dd634b174a62eef6946f84dfc6a7127512b381c"
 dependencies = [
  "bitflags",
- "textwrap",
+ "textwrap 0.11.0",
  "unicode-width",
+]
+
+[[package]]
+name = "clap"
+version = "3.1.18"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d2dbdf4bdacb33466e854ce889eee8dfd5729abf7ccd7664d0a2d60cd384440b"
+dependencies = [
+ "atty",
+ "bitflags",
+ "clap_derive",
+ "clap_lex",
+ "indexmap",
+ "lazy_static",
+ "strsim 0.10.0",
+ "termcolor",
+ "textwrap 0.15.0",
+]
+
+[[package]]
+name = "clap_derive"
+version = "3.1.18"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "25320346e922cffe59c0bbc5410c8d8784509efb321488971081313cb1e1a33c"
+dependencies = [
+ "heck",
+ "proc-macro-error",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "clap_lex"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a37c35f1112dad5e6e0b1adaff798507497a18fceeb30cceb3bae7d1427b9213"
+dependencies = [
+ "os_str_bytes",
 ]
 
 [[package]]
@@ -683,7 +724,7 @@ checksum = "1604dafd25fba2fe2d5895a9da139f8dc9b319a5fe5354ca137cbbce4e178d10"
 dependencies = [
  "atty",
  "cast",
- "clap",
+ "clap 2.34.0",
  "criterion-plot",
  "csv",
  "itertools",
@@ -873,7 +914,7 @@ dependencies = [
  "ident_case",
  "proc-macro2",
  "quote",
- "strsim",
+ "strsim 0.9.3",
  "syn",
 ]
 
@@ -1103,6 +1144,23 @@ dependencies = [
 [[package]]
 name = "eth-types"
 version = "0.1.0"
+dependencies = [
+ "ethers-core",
+ "ethers-providers",
+ "halo2_proofs",
+ "hex",
+ "itertools",
+ "lazy_static",
+ "regex",
+ "serde",
+ "serde_json",
+ "uint",
+]
+
+[[package]]
+name = "eth-types"
+version = "0.1.0"
+source = "git+https://github.com/ZhenXunGe/zkevm-circuits.git?branch=main#1eb36c61a469cbe8775369454863ccd6f87bc1b7"
 dependencies = [
  "ethers-core",
  "ethers-providers",
@@ -1390,7 +1448,7 @@ dependencies = [
 name = "external-tracer"
 version = "0.1.0"
 dependencies = [
- "eth-types",
+ "eth-types 0.1.0",
  "geth-utils",
  "serde",
  "serde_json",
@@ -1633,7 +1691,7 @@ name = "gadgets"
 version = "0.1.0"
 dependencies = [
  "digest 0.7.6",
- "eth-types",
+ "eth-types 0.1.0",
  "halo2_proofs",
  "rand",
  "rand_xorshift",
@@ -1762,17 +1820,64 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "eabb4a44450da02c90444cf74558da904edde8fb4e9035a9a6a4e15445af0bd7"
 
 [[package]]
+name = "halo2-ecc-circuit-lib"
+version = "0.1.0"
+dependencies = [
+ "group 0.11.0",
+ "halo2_proofs",
+ "num-bigint",
+ "num-integer",
+ "pairing_bn256",
+]
+
+[[package]]
+name = "halo2-snark-aggregator-api"
+version = "0.1.0"
+dependencies = [
+ "blake2b_simd",
+ "chrono",
+ "eth-types 0.1.0 (git+https://github.com/ZhenXunGe/zkevm-circuits.git?branch=main)",
+ "group 0.11.0",
+ "halo2_proofs",
+ "pairing_bn256",
+ "poseidon",
+ "rand",
+ "rand_pcg",
+ "rand_xorshift",
+]
+
+[[package]]
+name = "halo2-snark-aggregator-circuit"
+version = "0.1.0"
+dependencies = [
+ "clap 3.1.18",
+ "halo2-ecc-circuit-lib",
+ "halo2-snark-aggregator-api",
+ "halo2_proofs",
+ "log",
+ "pairing_bn256",
+ "rand",
+ "rand_core",
+ "rand_pcg",
+ "rayon",
+ "serde_json",
+]
+
+[[package]]
 name = "halo2_proofs"
 version = "0.1.0-beta.1"
-source = "git+https://github.com/appliedzkp/halo2.git?tag=v2022_05_09#9992785dca35926ded74f6ec7c8dfbac507317d0"
+source = "git+https://github.com/junyu0312/halo2?rev=4112958c7fa980b331897fd030a329095f418ff9#4112958c7fa980b331897fd030a329095f418ff9"
 dependencies = [
  "blake2b_simd",
  "bumpalo",
  "cfg-if 0.1.10",
  "ff 0.11.1",
  "group 0.11.0",
+ "num-bigint",
+ "num-integer",
  "pairing_bn256",
  "plotters",
+ "poseidon",
  "rand",
  "rand_core",
  "rayon",
@@ -2015,7 +2120,7 @@ version = "0.1.0"
 dependencies = [
  "bus-mapping",
  "env_logger",
- "eth-types",
+ "eth-types 0.1.0",
  "ethers",
  "ff 0.11.1",
  "halo2_proofs",
@@ -2094,7 +2199,7 @@ checksum = "67c21572b4949434e4fc1e1978b99c5f77064153c59d998bf13ecd96fb5ecba7"
 name = "keccak256"
 version = "0.1.0"
 dependencies = [
- "eth-types",
+ "eth-types 0.1.0",
  "gadgets",
  "halo2_proofs",
  "itertools",
@@ -2211,7 +2316,7 @@ dependencies = [
 name = "mock"
 version = "0.1.0"
 dependencies = [
- "eth-types",
+ "eth-types 0.1.0",
  "ethbloom",
  "external-tracer",
  "itertools",
@@ -2268,6 +2373,7 @@ dependencies = [
  "autocfg",
  "num-integer",
  "num-traits",
+ "rand",
 ]
 
 [[package]]
@@ -2410,6 +2516,12 @@ dependencies = [
  "pkg-config",
  "vcpkg",
 ]
+
+[[package]]
+name = "os_str_bytes"
+version = "6.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "21326818e99cfe6ce1e524c2a805c189a99b5ae555a35d19f9a284b427d86afa"
 
 [[package]]
 name = "output_vt100"
@@ -2665,6 +2777,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "poseidon"
+version = "0.1.0"
+source = "git+https://github.com/appliedzkp/poseidon.git?branch=circuit#1f8609776f64f36b518aac1732f18758d65a2791"
+dependencies = [
+ "group 0.11.0",
+ "pairing_bn256",
+ "rand",
+ "subtle",
+]
+
+[[package]]
 name = "ppv-lite86"
 version = "0.2.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2744,7 +2867,7 @@ version = "0.1.0"
 dependencies = [
  "bus-mapping",
  "env_logger",
- "eth-types",
+ "eth-types 0.1.0",
  "ethers-providers",
  "halo2_proofs",
  "hyper",
@@ -2807,6 +2930,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d34f1408f55294453790c48b2f1ebbb1c5b4b7563eb1f418bcfcfdbb06ebb4e7"
 dependencies = [
  "getrandom",
+]
+
+[[package]]
+name = "rand_pcg"
+version = "0.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "59cad018caf63deb318e5a4586d99a24424a364f40f1e5778c29aca23f4fc73e"
+dependencies = [
+ "rand_core",
 ]
 
 [[package]]
@@ -3404,6 +3536,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6446ced80d6c486436db5c078dde11a9f73d42b57fb273121e160b84f63d894c"
 
 [[package]]
+name = "strsim"
+version = "0.10.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "73473c0e59e6d5812c5dfe2a064a6444949f089e20eec9a2e5506596494e4623"
+
+[[package]]
 name = "strum"
 version = "0.24.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3487,6 +3625,12 @@ checksum = "d326610f408c7a4eb6f51c37c330e496b08506c9457c9d34287ecc38809fb060"
 dependencies = [
  "unicode-width",
 ]
+
+[[package]]
+name = "textwrap"
+version = "0.15.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b1141d4d61095b28419e22cb0bbf02755f5e54e0526f97f1e3d1d160e60885fb"
 
 [[package]]
 name = "thiserror"
@@ -4114,7 +4258,7 @@ dependencies = [
  "ctor",
  "digest 0.7.6",
  "env_logger",
- "eth-types",
+ "eth-types 0.1.0",
  "ethers-core",
  "ff 0.11.1",
  "gadgets",

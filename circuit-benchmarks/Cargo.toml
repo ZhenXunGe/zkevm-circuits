@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 ff = "0.11"
-halo2_proofs = { git = "https://github.com/appliedzkp/halo2.git", tag = "v2022_05_09" }
+halo2_proofs = { git = "https://github.com/junyu0312/halo2", rev = "4112958c7fa980b331897fd030a329095f418ff9", default-features = true }
 ark-std = { version = "0.3", features = ["print-trace"] }
 zkevm-circuits = { path = "../zkevm-circuits" }
 keccak256 = { path = "../keccak256" }
@@ -16,6 +16,8 @@ rand_xorshift = "0.3"
 rand = "0.8"
 itertools = "0.10"
 eth-types = { path = "../eth-types" }
+halo2-snark-aggregator-circuit = { path = "../../halo2ecc/halo2-snark-aggregator-circuit" }
+halo2-ecc-circuit-lib = { path = "../../halo2ecc/halo2-ecc-circuit-lib" }
 
 [features]
 default = []
