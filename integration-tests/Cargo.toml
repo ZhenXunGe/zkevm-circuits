@@ -18,7 +18,7 @@ url = "2.2.2"
 pretty_assertions = "1.0.0"
 log = "0.4.14"
 env_logger = "0.9"
-halo2_proofs = { git = "https://github.com/junyu0312/halo2", rev = "03677477e453a0672986c904f7bf276aa314995c", default-features = true }
+halo2_proofs = { git = "https://github.com/junyu0312/halo2", rev = "35fae8cfb75052516aeaceddbd16e3f1c54edad2", default-features = true }
 ff =  "0.11"
 
 [dev-dependencies]

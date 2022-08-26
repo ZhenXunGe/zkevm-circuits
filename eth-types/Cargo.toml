@@ -9,7 +9,7 @@ ethers-core = "0.6"
 ethers-providers = "0.6"
 hex = "0.4"
 lazy_static = "1.4"
-halo2_proofs = { git = "https://github.com/junyu0312/halo2", rev = "03677477e453a0672986c904f7bf276aa314995c", default-features = true }
+halo2_proofs = { git = "https://github.com/junyu0312/halo2", rev = "35fae8cfb75052516aeaceddbd16e3f1c54edad2", default-features = true }
 regex = "1.5.4"
 serde = {version = "1.0.130", features = ["derive"] }
 serde_json = "1.0.66"

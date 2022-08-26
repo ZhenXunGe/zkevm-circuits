@@ -5,7 +5,7 @@ edition = "2021"
 authors = ["The appliedzkp team"]
 
 [dependencies]
-halo2_proofs = { git = "https://github.com/junyu0312/halo2", rev = "03677477e453a0672986c904f7bf276aa314995c", default-features = true }
+halo2_proofs = { git = "https://github.com/junyu0312/halo2", rev = "35fae8cfb75052516aeaceddbd16e3f1c54edad2", default-features = true }
 sha3 = "0.7.2"
 eth-types = { path = "../eth-types" }
 digest = "0.7.6"

@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 ff = "0.11"
-halo2_proofs = { git = "https://github.com/junyu0312/halo2", rev = "03677477e453a0672986c904f7bf276aa314995c", default-features = true }
+halo2_proofs = { git = "https://github.com/junyu0312/halo2", rev = "35fae8cfb75052516aeaceddbd16e3f1c54edad2", default-features = true }
 ark-std = { version = "0.3", features = ["print-trace"] }
 zkevm-circuits = { path = "../zkevm-circuits" }
 keccak256 = { path = "../keccak256" }
